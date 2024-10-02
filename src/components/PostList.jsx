@@ -14,7 +14,6 @@ export const PostList = ({ posts, title, removePost }) => {
           <CSSTransition key={p.id} timeout={500} classNames="post">
             <PostItem
               id={p.id}
-              index={index + 1}
               title={p.title}
               body={p.body}
               removePost={removePost}
