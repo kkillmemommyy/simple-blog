@@ -1,5 +1,5 @@
 import axios from "axios";
-import { routes } from "../routes";
+import { routes } from "../routers/apiRoutes";
 
 export class PostServices {
   static async getAll(limit = 10, page = 10) {

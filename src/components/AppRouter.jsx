@@ -1,13 +1,29 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { Posts, About, Error, PostPage } from "../pages";
+import { routes } from "../routers";
+import { PrivateRoute } from "./PrivateRoute/PrivateRoute";
 
 export const AppRouter = () => {
   return (
     <Routes>
-      <Route path="/posts" element={<Posts />} />
-      <Route path="/posts/:id" element={<PostPage />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/error" element={<Error />} />
+      {routes.map((route) =>
+        route.private ? (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={
+              <PrivateRoute>
+                <route.component />
+              </PrivateRoute>
+            }
+          />
+        ) : (
+          <Route
+            key={route.path}
+            path={route.path}
+            element={<route.component />}
+          />
+        )
+      )}
       <Route path="/" element={<Navigate to="/posts" />} />
       <Route path="*" element={<Navigate to="/error" />} />
     </Routes>

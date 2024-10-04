@@ -24,8 +24,6 @@ export const PostPage = () => {
     fetchComments(params.id);
   }, []);
 
-  console.log(comments);
-
   return (
     <div>
       <h1>Вы открыли страницу поста с ID = {params.id}</h1>
@@ -42,7 +40,7 @@ export const PostPage = () => {
       ) : (
         <div>
           {comments.map((c) => (
-            <div style={{ marginTop: 15 }}>
+            <div style={{ marginTop: 15 }} key={c.id}>
               <h5>{c.email}</h5>
               <div>{c.body}</div>
             </div>
